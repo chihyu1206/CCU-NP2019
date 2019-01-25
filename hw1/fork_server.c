@@ -118,7 +118,7 @@ int main(int argc, char *argv[]) {
 		/*parent process*/
 		if (pid > 0) {
 			wait(NULL);
-			close(client_fd);
+			close(client_fd)
 		}
 	}
 	return 0;
