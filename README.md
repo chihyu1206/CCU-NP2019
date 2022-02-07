@@ -1,2 +1,2 @@
-# CCU-NetProg2019
+# CCU-NP2019
 CCU Network Programming 2019
