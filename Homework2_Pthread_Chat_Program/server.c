@@ -15,7 +15,7 @@ pthread_t thread;
 pthread_mutex_t mutex;
 
 #define MAX_CLIENT 10
-#define CHATDATA 1024
+#define CHATDATA 2048
 #define MAX_NAME 16
 #define INVALID_SOCK -1
 
@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
       close(c_socket);
     } else {
       write(c_socket, INFO, strlen(INFO));
-      pthread_create(&thread, NULL, do_chat, (void *) c_socket);
+      pthread_create(&thread, NULL, do_chat, &c_socket);
     }
   }
   return 0;
@@ -94,7 +94,7 @@ int main(int argc, char *argv[]) {
 
 void *do_chat(void *arg)
 {
-  int c_socket = (int) arg;
+  int c_socket = *(int *) arg;
   char chatData[CHATDATA];
   char sendBuffer[CHATDATA];
   int i, n;
